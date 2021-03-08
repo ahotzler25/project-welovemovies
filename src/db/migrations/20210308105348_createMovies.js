@@ -2,11 +2,11 @@
 exports.up = function(knex) {
   return knex.schema.createTable("movies", (table) => {
       table.increments("id").primary();
-      table.string("title");
+      table.string("title", 20000);
       table.integer("runtime_in_minutes");
       table.string("rating");
-      table.string("description");
-      table.string("image_url");
+      table.string("description", 20000);
+      table.string("image_url", 20000);
   })
 };
 
