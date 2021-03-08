@@ -10,8 +10,8 @@ app.use("/movies", moviesRouter);
 
 // ERROR HANDLER
 app.use((err, req, res, next) => {
-    console.error(error);
-    const { status = 500, message = "Something went wrong." } = error;
+    console.error(err);
+    const { status = 500, message = "Something went wrong." } = err;
     res.status(status).json({errors: [message] }); 
 });
 
