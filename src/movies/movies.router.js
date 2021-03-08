@@ -3,6 +3,11 @@ const moviesController = require("./movies.controller");
 const methodNotAllowed = require("../errors/methodNotAllowed");
 
 router
+    .route("/:movieId")
+    .get(moviesController.read)
+    .all(methodNotAllowed);
+
+router
     .route("/")
     .get(moviesController.list)
     .all(methodNotAllowed);
