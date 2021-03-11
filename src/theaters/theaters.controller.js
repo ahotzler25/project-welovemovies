@@ -1,10 +1,11 @@
 const TheatersService = require("./theaters.service");
+const treeize = require('../utils/treeize');
 
-function list(req, res, next) {
-    TheatersService.getAllTheaters()
-        .then((theaters) => {
-        res.status(200).json({ data: theaters })
-    })
+async function list(req, res, next) {
+    let list = await TheatersService.list();
+    list = treeize(list);
+
+    res.json({ data: list });
 }
 
 module.exports = {

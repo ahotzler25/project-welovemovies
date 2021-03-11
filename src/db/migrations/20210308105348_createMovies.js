@@ -1,8 +1,8 @@
 
 exports.up = function(knex) {
   return knex.schema.createTable("movies", (table) => {
-      table.increments("id").primary();
-      table.string("title", 20000);
+      table.increments("movie_id").primary();
+      table.string("title");
       table.integer("runtime_in_minutes");
       table.string("rating");
       table.string("description", 20000);

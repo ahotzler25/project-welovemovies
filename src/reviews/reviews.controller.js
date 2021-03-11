@@ -21,7 +21,7 @@ async function update(req, res, next) {
     const { reviewId } = req.params;
     const { review } = res.locals; // const review = res.locals.review;
     const { newData } = req.body; // const newData = req.body.data;
-    let updatedReivew = { ...review };
+    let updatedReview = { ...review };
 
     updatedReview = treeize(await ReviewsService.update(reviewId, newData));
 
