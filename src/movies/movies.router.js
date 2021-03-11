@@ -1,6 +1,8 @@
 const router = require("express").Router();
 const moviesController = require("./movies.controller");
 const methodNotAllowed = require("../errors/methodNotAllowed");
+const reviewsRouter = require('../reviews/reviews.router');
+const theatersRouter = require('../theaters/theaters.router');
 
 /* TODO
 - `GET /movies
@@ -13,6 +15,10 @@ const methodNotAllowed = require("../errors/methodNotAllowed");
 - `GET /movies/:movieId/theaters`
 - `GET /movies/:movieId/reviews`
 */
+
+router.use("/:movieId/reviews", moviesController.movieExists, reviewsRouter);
+
+router.use("/:movieId/theaters", moviesController.movieExists, theatersRouter);
 
 router
     .route("/:movieId")

@@ -14,7 +14,6 @@ async function movieExists(req, res, next) {
     
     res.locals.movie = movie;
     next();
-    
 };
 
 
