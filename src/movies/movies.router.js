@@ -17,7 +17,6 @@ const theatersRouter = require('../theaters/theaters.router');
 */
 
 router.use("/:movieId/reviews", moviesController.movieExists, reviewsRouter);
-
 router.use("/:movieId/theaters", moviesController.movieExists, theatersRouter);
 
 router

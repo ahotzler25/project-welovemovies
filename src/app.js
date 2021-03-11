@@ -13,14 +13,18 @@ app.use("/movies", moviesRouter);
 app.use("/theaters", theatersRouter);
 app.use("/reviews", reviewsRouter);
 
-// ERROR HANDLER
-app.use((err, req, res, next) => {
-    console.error(err);
-    const { status = 500, message = "Something went wrong." } = err;
-    /* Does errors: message need to be an array? Only one error message 
-    should get sent back at any given time. */
-    res.status(status).json({errors: [message] }); 
+
+// NOT FOUND HANDLER
+app.use((req, res, next) => {
+    return next({ status: 404, message: `${req.originalUrl} cannot be found.`})
 });
 
+// ERROR HANDLER
+app.use((err, req, res, next) => {
+    console.error('Error Handler: ', err);
+    const { status = 500, message = "Something went wrong." } = err;
+
+    res.status(status).json({error: message }); 
+});
 
 module.exports = app;

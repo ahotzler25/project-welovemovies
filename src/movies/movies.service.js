@@ -30,10 +30,10 @@ const read = (movieId) => {
     .select("*")
     .where({ movie_id: movieId })
     .first();
-}
+};
 
 module.exports = {
     list,
     read,
     isShowing,
-}
+};
